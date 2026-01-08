@@ -6,6 +6,8 @@ pkill gnome-software
 # или
 pkill discover
 
+rm -rf ~/.cache/gnome-software
+
 2) Что делать при ошибке 403 dnf update -y:
 Отключите проблемный репозиторий и обновите систему:
 sudo dnf config-manager --disable fedora-cisco-openh264
