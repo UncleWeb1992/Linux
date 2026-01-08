@@ -1,25 +1,43 @@
-1) Как завершить процесс Центра приложений Fedora:
-Используйте терминал:
+# Завершить процесс Центра приложений Fedora:
 killall gnome-software
-# или
-pkill gnome-software
-# или
-pkill discover
-
 rm -rf ~/.cache/gnome-software
 
-2) Что делать при ошибке 403 dnf update -y:
-Отключите проблемный репозиторий и обновите систему:
-sudo dnf config-manager --disable fedora-cisco-openh264
-sudo dnf clean all
-sudo dnf update --refresh
+# Установите RPM Fusion Free (для открытого ПО) и Non-Free (для проприетарного):
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-3) Правильная установка nvidia:
-Шаг 1: Подготовьте систему и создайте снапшот через Timeshift (режим BTRFS).
-Шаг 2: Подключите репозитории RPM Fusion:
-sudo dnf install mirrors.rpmfusion.org(rpm -E %fedora).noarch.rpm mirrors.rpmfusion.org(rpm -E %fedora).noarch.rpm
-Шаг 3: Установите драйвер:
-sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda
-Шаг 4: **Подождите 5-10 минут** для компиляции модуля. Проверьте статус:
-modinfo -F version nvidia
-Шаг 5: Перезагрузите компьютер.
+# Отключить openh264 если не доступен при обновлении suod dnf update -y
+sudo nano /etc/dnf/dnf.conf
+# Добавить в конец файла:
+exclude=openh264
+
+# Ускорение dnf
+
+sudo nano /etc/dnf/dnf.conf
+# Основные параметры скорости
+fastestmirror=True
+max_parallel_downloads=10
+defaultyes=True
+keepcache=True
+# Для SSD или быстрых дисков
+deltarpm=True
+deltarpm_percentage=70
+# Кэширование
+metadata_expire=1h
+minrate=1
+# Скачивание
+ip_resolve=4  # принудительно IPv4, если IPv6 медленный
+timeout=10    # секунд
+retries=3
+
+sudo dnf install dnf-plugin-fastestmirror
+
+sudo dnf install gnome-tweaks
+
+flatpak install flathub com.mattjakeman.ExtensionManager
+
+# Расширения
+- Vitals
+- Burn my window
+- Dash todock
+- Keep pinned apps in AppGrid 
