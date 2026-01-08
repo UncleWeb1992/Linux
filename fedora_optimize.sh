@@ -90,13 +90,6 @@ echo ""
 echo "▶ ШАГ 4: Устанавливаем плагины DNF..."
 
 # Проверяем и устанавливаем плагины
-echo "🔌 Проверяем плагин fastestmirror..."
-if ! dnf list installed "dnf-plugin-fastestmirror" > /dev/null 2>&1; then
-    sudo dnf install -y dnf-plugin-fastestmirror
-    echo "✅ Плагин fastestmirror установлен"
-else
-    echo "✅ Плагин fastestmirror уже установлен"
-fi
 
 echo "🔌 Проверяем базовые плагины DNF..."
 if ! dnf list installed "dnf-plugins-core" > /dev/null 2>&1; then
@@ -117,8 +110,6 @@ echo "▶ ШАГ 5: Устанавливаем GNOME Tweaks и утилиты...
 # Список пакетов для установки
 gnome_packages=(
     "gnome-tweaks"          # Основные настройки GNOME
-    "chrome-gnome-shell"    # Интеграция с браузером для расширений
-    "gnome-extensions-app"  # Менеджер расширений
 )
 
 for package in "${gnome_packages[@]}"; do
@@ -188,10 +179,8 @@ echo "3. Обновите систему:"
 echo "   sudo dnf update -y"
 echo ""
 echo "4. Драйверы NVIDIA:"
-echo "   https://github.com/oddmario/NVIDIA-Fedora-Driver-Guide#driver-uninstallation"
+echo "   https://github.com/oddmario/NVIDIA-Fedora-Driver-Guide#driver"
 echo ""
 echo "5. Перезагрузите компьютер:"
 echo "   sudo reboot"
 echo ""
-
-https://github.com/oddmario/NVIDIA-Fedora-Driver-Guide#driver-uninstallation
