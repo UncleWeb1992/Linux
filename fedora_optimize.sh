@@ -187,6 +187,11 @@ echo ""
 echo "3. Обновите систему:"
 echo "   sudo dnf update -y"
 echo ""
-echo "4. Перезагрузите компьютер:"
+echo "4. Драйверы NVIDIA:"
+echo "   https://github.com/oddmario/NVIDIA-Fedora-Driver-Guide#driver-uninstallation"
+echo ""
+echo "5. Перезагрузите компьютер:"
 echo "   sudo reboot"
 echo ""
+
+https://github.com/oddmario/NVIDIA-Fedora-Driver-Guide#driver-uninstallation
