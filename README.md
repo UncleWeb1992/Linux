@@ -1,2 +1,2 @@
 # Linux
-dnf commands
+https://github.com/AllJavi/tartarus-startpage
