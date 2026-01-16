@@ -65,8 +65,14 @@ esac
 echo "✓ Прозрачность: ${percent}% ($val)"
 EOF
 
+# Fix youtube
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Snowy-Fluffy/zapret.installer/refs/heads/main/installer.sh)"
+
+
 chmod +x ~/.local/bin/opac
 echo "Готово! Теперь:"
 echo "  opac 1   = 1% прозрачности"
 echo "  opac 20  = 20% прозрачности"
 echo "  opac 100 = непрозрачный"
+
+echo "zapret - фикс youtubr"
