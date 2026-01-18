@@ -155,10 +155,16 @@ flatpak install flathub com.mattjakeman.ExtensionManager -y
 sleep 1
 
 echo "========================================================"
-echo "✅ Установка hot-key - alt-shift для смены языка"
+echo "✅ Установка hot-key - alt-shift для смены языка        "
 echo "========================================================"
 
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Shift_L']"
+
+
+echo "========================================================"
+echo "✅ Установка мультимедиа кодеков                        "
+echo "========================================================"
+sudo dnf group install multimedia
 
 # ============================================================================
 # ЗАВЕРШЕНИЕ
